@@ -1,0 +1,80 @@
+<form #formControl="ngForm">
+<div  style="background-color:azure"><br>
+
+
+<div class="form-group"> 
+    <label for="FullName" class="control-label"><b> FullName: </b></label><br>
+    <input required id="box" type="text" name="FullName" [(ngModel)]="newstd1.name" #FullNameControl="ngModel"> 
+ <span class="help-block" *ngIf="FullNameControl.invalid && FullNameControl.touched">
+   FullName is required
+</span>
+  </div>
+  <br>
+  <div> 
+    <label for="id"><b> Id: </b></label><br>
+    <input required id="box" type="text" name="Id" [(ngModel)]="newstd1.id" #IDControl="ngModel"> 
+    <span class="help-block" *ngIf="IDControl.invalid && IDControl.touched">
+      Id is required
+    </span>
+  </div>
+  <br>
+  <div> 
+    <label for="email id"><b>Email Id: </b></label><br>
+    <input required email id="box" type="text" name="Email" [(ngModel)]="newstd1.email" #MailControl="ngModel"> 
+  <div class="help-block" *ngIf="MailControl.invalid && MailControl.touched ">
+    
+<div *ngIf="MailControl.errors.required">mail id is required.</div>
+  <div *ngIf="MailControl.errors.email">email must be valid email address</div>
+  </div>
+  </div>
+  <br>
+  
+  <div> 
+    <label for="mobileno"><b>Mobile Number: </b></label><br>
+    <input required id="box" type="text" name="mobileno." [(ngModel)]="newstd1.mobnumber" #MobNumber="ngModel" minlength="10">
+    <div class="help-block" *ngIf="MobNumber.invalid && MobNumber.touched">
+     <div *ngIf="MobNumber.errors.required"> Mobile number is required </div>
+     <div *ngIf="MobNumber.errors.minlength">Mobile no. must be at least 10 digits</div>
+    </div> 
+  </div>
+  <br>
+  
+  <div> <b> Select Gender :</b> <br>
+    <label for="gender1">Male:</label>
+    <input id="gender1" type="radio" name="gender1" value="male" [(ngModel)]="newstd1.gender" #gender="ngModel" required><br>
+  
+    <label for="gender2">Female:</label>
+    <input id="gender2" type="radio" name="gender1" value="female" [(ngModel)]="newstd1.gender" #gender="ngModel" required><br>
+    
+    <label for="gender3">Other:</label>
+    <input id="gender3" type="radio" name="gender1" value="other" [(ngModel)]="newstd1.gender" #gender="ngModel" required><br>
+  <div class="help-block" *ngIf="gender.invalid">
+    gender required
+  </div>
+  </div>  <br>
+
+  <div name="comboform" > <b>Select Country :</b><br>
+      <select id="box" name="Countries" [(ngModel)]="newstd1.country" style="color: blue" required #country="ngModel">
+        <option>India</option>
+        <option>Japan</option>
+        <option>China</option>
+        <option>Pakistan</option>
+      </select>
+  </div>  <br>
+    
+    <div class="help-block" *ngIf="country.invalid" > select country</div>
+
+     <b>Select Courses : </b><br>
+  <div *ngFor="let item of newstd1.coursearr; index as ind" >
+    
+    <label>{{item.crname}}:</label>
+    <input type="checkbox"  [(ngModel)]="item.checked" name="'chk'+ind"  ><br>
+  </div><br>
+
+
+
+<div><button id="save button" type="button" (click)="save()" style="color: blue" [disabled]="formControl.invalid">Save</button>
+  <span><button id="add button" type="button" (click)="clear()" style="color: blue">clear</button></span></div>
+<br>
+</div>
+</form>

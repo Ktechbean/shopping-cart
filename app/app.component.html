@@ -1,0 +1,88 @@
+
+
+
+<!--<div style="text-align:center">
+  <h1>Welcome to {{ title }}!</h1>
+  <b>{{tch.name}}</b>
+</div> 
+<div *ngIf="joinedschool"> welcome Kriya ma'am!!</div>
+<span [hidden]="show">dfds</span>
+--><!--//this is working and it shows working of ngIf & [hidden]//-->
+
+  <div style="background-color: silver">
+  <h3>display student's info</h3>
+    
+  <style>
+    #box
+    {
+      background-color: powderblue;
+    }
+  </style>
+
+<div *ngFor="let std of stdarr">
+name: {{std.name}} || id: {{std.id}}|| gender:{{std.gender}}|| country: {{std.country}}|| course name:
+<span *ngFor="let item of std.coursearr" ><span *ngIf="item.checked">{{item.crname}} ,</span></span>
+<button type="button" name="Edit" (click)="editstud(std.id)">edit</button><app-delete [deleteid]=std.id></app-delete>
+</div>
+<button (click)="EDIT=false" value="ADD NEW"> ADD NEW</button>
+<div *ngIf="!EDIT">
+ <app-add></app-add>
+</div>
+<div *ngIf="EDIT">
+ <div> 
+    <label for="Name"><b> Name: </b></label><br>
+    <input  id="box" type="text" name="Name" [(ngModel)]="newstd.name" > 
+  </div>
+  <br>
+  <div> 
+    <label for=" id"><b> Id: </b></label><br>
+    <input  id="box" type="text" name="Id" [(ngModel)]="newstd.id"> 
+  </div>
+  <br>
+  <div> 
+    <label for="email id"><b>Email Id: </b></label><br>
+    <input  id="box" type="text" name="Email" [(ngModel)]="newstd.email"> 
+  </div>
+  <br>
+  
+  <div> 
+    <label for="mobileno"><b>Mobile Number: </b></label><br>
+    <input  id="box" type="text" name="mobileno." [(ngModel)]="newstd.mobnumber"> 
+  </div>
+  <br>
+
+  <div> <b> Select Gender :</b> <br>
+    <label for="gender">Male:</label>
+    <input id="gender" type="radio" name="gender" value="male" [(ngModel)]="newstd.gender"><br>
+  
+    <label for="gender">Female:</label>
+    <input id="gender" type="radio" name="gender" value="female" [(ngModel)]="newstd.gender"><br>
+    
+    <label for="gender">Other:</label>
+    <input id="gender" type="radio" name="gender" value="other" [(ngModel)]="newstd.gender"><br>
+  </div>  <br>
+
+  <div > <b>Select Country :</b><br>
+      <select id="box"[(ngModel)]="newstd.country" style="color: blue">
+        <option>India</option>
+        <option>Japan</option>
+        <option>China</option>
+        <option>Pakistan</option>
+      </select>
+  </div>  <br>
+    
+    
+     <b>Select Courses : </b><br>
+  <div *ngFor="let item of newstd.coursearr" >
+    
+    <label>{{item.crname}}:</label>
+    <input type="checkbox"  [(ngModel)]="item.checked" /><br>
+  </div><br>
+
+  <div >
+    <button id="update button" type="button" (click)="updateEmployee()" style="color: blue"><b>Update</b></button>
+  </div>
+  
+  
+   </div>
+  </div>
