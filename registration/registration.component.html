@@ -1,0 +1,27 @@
+<fieldset>
+    <legend>Sign Up</legend>
+    First Name :- <input placeholder="Enter your first Name" [(ngModel)]="RegBind.firstName" type="text">
+    Last Name :- <input placeholder="Enter your Last Name" [(ngModel)]="RegBind.lastName" type="text"><br>
+    email :-  <input placeholder="Enter your Email" [(ngModel)]="RegBind.email" type="email"><br>
+
+    Password :-  <input placeholder="Enter your Password" [(ngModel)]="Password" type="password"
+    pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$">
+    <input type="checkbox" [checked]="isTrue" (change)="isTrue = !isTrue" > Show Password<br>
+    <div *ngIf="isTrue">
+        {{Password}}
+    </div>
+    Confirm Password :-  <input placeholder="Re-Enter your Password" type="password" [(ngModel)]="RegBind.password" #Pass="ngModel"
+    pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$">
+    <input type="checkbox" [checked]="isTrue1" > Show Password<br>
+    <div *ngIf="isTrue1">
+        {{RegBind.password}}
+    </div>
+    <div *ngIf="(Password != RegBind.password) && (Pass.dirty || Pass.touched)" class="alert alert-danger">
+        Enter Password did'nt matched!
+        <br>
+    </div>
+    <div>
+
+    </div>
+    <button (click)="Register(RegBind)">Submit</button>
+</fieldset>
