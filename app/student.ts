@@ -1,7 +1,8 @@
 import { Courses } from "./courses";
 
 export class Student {
-    name:string;
+    Firstname:string;
+    Lastname:string;
     id:number;
     email:string;
     mobnumber:number;
